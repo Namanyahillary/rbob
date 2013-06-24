@@ -1,0 +1,57 @@
+/*
+Design by Metamorphosis Design
+http://www.metamorphozis.com
+Released for free under a Creative Commons Attribution 2.5 License
+*/
+
+/* gallery */
+
+.row {
+	padding: 0px 0px 0px 17px;
+}
+
+.box_img2 {
+	width: 277px;
+	background: url(images/box_img.jpg) 0px 0px no-repeat;
+	padding: 0px 0px 0px 0px;
+	float:left;
+}
+
+.box_razd {
+	width: 36px;
+	height: 50px;
+	float: left;
+}
+
+.text_gal { padding: 8px 0px 10px 10px;}
+
+.box_img2 h1 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:18px;
+	font-weight: 100;
+	color: #864C00;
+	text-align: center;
+	padding: 5px 0px 8px 0px;
+}
+
+.rol_over:hover {
+
+background:url(images/rol_over_galery.png) left top no-repeat;
+}
+
+
+
+
+
+.nivoSlider { position:relative;}
+.nivoSlider img { position:absolute; top:0px; left:0px;}
+.nivoSlider a.nivo-imageLink { position:absolute; top:0px; left:0px; width:100%; height:100%; border:0; padding:0; margin:0; z-index:60; display:none;}
+.nivo-slice { display:block; position:absolute; z-index:50; height:100%; }
+.nivo-caption {	position:absolute; left:0px; bottom:0px;  color:#000; width:100%; z-index:89; padding-left: 10px; font-weight: bold}
+.nivo-caption p { padding:10px 5px; margin:0; text-indent:-9999%;}
+.nivo-directionNav a {position:absolute; width:45px; height: 60px; top:45%; z-index:99; cursor:pointer; text-indent:-9999%;}
+.nivo-prevNav { background-position: left bottom; left:20px; background:url(images/prev_h.png) no-repeat;}
+.nivo-nextNav { background-position: left top; right: 0px; background:url(images/next_h.png) no-repeat;}
+.nivo-controlNav { bottom:-20px; position:absolute; right:0;}
+.nivo-controlNav a { float:left; width:14px; height:14px; display:block; position:relative; z-index:99;	cursor:pointer; text-indent:-9999%; background:url(images/scroll_small.png) no-repeat scroll right top;}
+.nivo-controlNav a.active {	background-position:left top; margin-top:-1px;}

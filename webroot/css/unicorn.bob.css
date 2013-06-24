@@ -1,0 +1,127 @@
+/**
+ * Unicorn Admin Template
+ * Diablo9983 -> diablo9983@gmail.com
+**/
+body {
+	background: #496920;
+	background: url("../img/bg2.png") repeat-x fixed center top #496920;
+	height: 100%;
+	background-attachment: fixed;
+	background-size:100% 100%;
+	
+}
+
+#header {
+margin-top:-2%;
+}
+
+.navbar-inner{
+    background: url(../img/header.png) no-repeat;
+    background-size : 100% 100%;
+}
+
+#search input[type=text], #search button {
+	background-color: #f1f2f3;
+}
+#search input[type=text]:focus {
+	color: #777777;
+}
+
+#user-nav .btn-inverse {
+    background-color: #82b920;
+    background-image: -webkitgradient(linear, 0 0%, 0 100%, from(#20790f), to(#82b920));
+    background-image: -webkit-linear-gradient(top, #20790f 0%, #82b920 100%);
+    background-image: -moz-linear-gradient(top, #20790f 0%, #82b920 100%);
+    background-image: -ms-linear-gradient(top, #20790f 0%, #82b920 100%);
+    background-image: -o-linear-gradient(top, #20790f 0%, #82b920 100%);
+	background-image: linear-gradient(top, #20790f 0%, #82b920 100%);
+	border-top-color: #1F1E38;
+}
+#user-nav .btn-inverse > a {
+    color: #ffffff;
+    color: rgba(255,255,255,0.6);
+}
+#sidebar > ul {
+	border-top: 1px solid #529910;
+	border-bottom: 1px solid #82B920;
+}
+#sidebar > ul > li {
+	border-top: 1px solid #80A910;
+	border-bottom: 1px solid #80A910;
+}
+
+#sidebar > ul > li.active {
+    background-color: #100F17;
+	background-image: -webkit-gradient(linear, 0 0%, 0 100%, from(#426400), to(#100F17));
+	background-image: -webkit-linear-gradient(top, #426400 0%, #100F17 100%);
+	background-image: -moz-linear-gradient(top, #426400 0%, #100F17 100%);
+	background-image: -ms-linear-gradient(top, #426400 0%, #100F17 100%);
+	background-image: -o-linear-gradient(top, #426400 0%, #100F17 100%);
+	background-image: linear-gradient(top, #426400 0%, #100F17 100%);
+}
+
+#sidebar > ul > li.open.submenu > a {					
+	border-bottom: 1px solid #0D0D1E;
+}
+#sidebar > ul > li.open.active.submenu > a {
+	border-bottom: 1px solid #3D5B00;
+}
+#sidebar > ul > li > a > .label {
+	background-color: #0D0D1E;
+}
+#sidebar > ul > li > a:hover {
+	/*background-color: #1F203B;*/
+	background-color: #517005;		
+}
+#sidebar > ul ul {
+	border-top: 1px solid #24233D;
+	background-color: #416000;
+	color:#82B920;
+}
+#sidebar > ul ul li a {
+	border-top: 1px solid #82B920;
+	border-bottom: 1px solid #52a510;
+}
+#sidebar > ul ul li a:hover, #sidebar > ul ul li.active a {
+	color: #fff;
+	background-color: #517005;
+}
+
+#sidebar > ul > li > a {
+	color: #ddd;
+}
+
+.dropdown-menu li a:hover, .dropdown-menu .active a, .dropdown-menu .active a:hover {
+	background-color: #272541;
+    background-image: -webkit-gradient(linear, 0 0%, 0 100%, from(#292C3E), to(#13152A));
+    background-image: -webkit-linear-gradient(top, #292C3E 0%, #13152A 100%);
+    background-image: -moz-linear-gradient(top, #292C3E 0%, #13152A 100%);
+	background-image: -ms-linear-gradient(top, #292C3E 0%, #13152A 100%);
+	background-image: -o-linear-gradient(top, #292C3E 0%, #13152A 100%);
+	background-image: linear-gradient(top, #292C3E 0%, #13152A 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#292C3E', endColorstr='#13152A',GradientType=0 ); /* IE6-9 */
+    color: #eeeeee;
+}
+
+@media (max-width: 480px) {
+	#sidebar > a {
+        background-image: -webkit-gradient(linear, 0 0%, 0 100%, from(#272541), to(#17162A));
+        background-image: -webkit-linear-gradient(top, #272541 0%, #17162A 100%);
+		background-image: -moz-linear-gradient(top, #272541 0%, #17162A 100%);
+        background-image: -ms-linear-gradient(top, #272541 0%, #17162A 100%);
+        background-image: -o-linear-gradient(top, #272541 0%, #17162A 100%);
+        background-image: linear-gradient(top, #272541 0%, #17162A 100%);
+		border-bottom: 1px solid #464471;
+	}
+	#sidebar > ul {
+		background-color: #18192D;
+	}
+}
+@media (min-width: 481px) and (max-width: 767px) {
+	#sidebar > ul ul:before {
+		border-right: 7px solid rgba(0, 0, 0, 0.2);
+	}
+	#sidebar > ul ul:after {
+		border-right: 6px solid #13152A;
+    }
+}
