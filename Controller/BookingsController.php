@@ -10,6 +10,59 @@ class BookingsController extends AppController {
 	
 	public $uses=array('Booking','Destination','User','Country','Bank','Group','GroupMember','Activity');
 	
+	public function cancel_booking($id = null) {
+	
+		$this->Booking->id = $id;
+		if (!$this->Booking->exists()) {
+			throw new NotFoundException(__('Invalid booking'));
+		}
+		
+		/**
+		 *BOOKING DETAILS
+		 *=========================================
+		 *Get the booking details about the destination to be cancled
+		 */
+		$booking=$this->Booking->find('first',
+			array(
+				'conditions'=>array(
+					'Booking.id'=>$id,
+					'Booking.user_id'=>$this->Auth->User('id')
+				)
+			)
+		);
+		
+		if(count($booking)){
+		
+			/**
+			 *NOTIFY super_admins ABOUT THE CANCELATION
+			 *=========================================
+			 *Notification To super_admins
+			 */
+			foreach(Configure::read('super_admins') as $super_admin){
+				$this->User->Notification->msg(
+					$super_admin," has cancled a destination booking for ".($booking['Destination']['name']).'. Transaction ref: ['.($booking['Booking']['transaction'])."]",
+					null,(Configure::read('domainAddress')).'/bookings/view/'.($booking['Booking']['id']),$this->Auth->User('id')
+				);
+			}
+			
+			$this->Session->setFlash(__('Request sent. We shall get back to you shortly. Thanks.'));
+			$this->redirect(array('action' => 'index'));
+			
+			/*
+			$this->request->data['Booking']['id']=$this->Booking->id;
+			$this->request->data['Booking']['status']=1;
+			$this->request->data['Booking']['current_status']='I Canceled';
+			if ($this->Booking->save($this->request->data)) {
+				$this->Session->setFlash(__('You just canceled your reservation.'));
+				$this->redirect(array('action' => 'index'));
+			}
+			$this->Session->setFlash(__('Reservation could not be canceled.'));
+			$this->redirect(array('action' => 'index'));*/
+		}else{
+			throw new NotFoundException(__('Invalid booking'));
+		}
+	}
+	
 	public function add_activity($destination,$activity){
 		if ($this->Destination->exists($destination)) {
 			if($this->Activity->exists($activity)){				
@@ -175,7 +228,11 @@ class BookingsController extends AppController {
 		
 		$admin_client_id=$this->Session->read("RoundBob['Booking']['admin_client_id']");
 		
-		$countries		= $this->Country->find('all');
+		$country		= $this->Country->find('first',array(
+			'conditions'=>array(
+				'Country.id'=>$this->Session->read("RoundBob['Destination']['Country']")
+			)
+		));
 		$booking_stage	= (int)$this->Session->read("RoundBob['Booking']['stage']");
 		$destination	= $this->Destination->find('all',array('conditions'=>array('id'=>$destination),'recursive'=>-1));
 		$groups			= $this->Group->find('all',array(
@@ -184,7 +241,7 @@ class BookingsController extends AppController {
 								'Group.user_id'=>(($this->Auth->User('role')=='bank_admin' && ($admin_client_id))?$admin_client_id:$this->Auth->User('id'))
 							)
 						));
-		$this->set(compact('booking_stage','destination','countries','groups'));
+		$this->set(compact('booking_stage','destination','country','groups'));
 	}
 	
 	
@@ -652,22 +709,6 @@ class BookingsController extends AppController {
 			$this->redirect(array('action' => 'index'));
 		}
 		$this->Session->setFlash(__('Booking was not deleted'));
-		$this->redirect(array('action' => 'index'));
-	}
-	
-	public function cancel_booking($id = null) {
-		$this->Booking->id = $id;
-		if (!$this->Booking->exists()) {
-			throw new NotFoundException(__('Invalid booking'));
-		}
-		$this->request->data['Booking']['id']=$this->Booking->id;
-		$this->request->data['Booking']['status']=1;
-		$this->request->data['Booking']['current_status']='I Canceled';
-		if ($this->Booking->save($this->request->data)) {
-			$this->Session->setFlash(__('You just canceled your reservation.'));
-			$this->redirect(array('action' => 'index'));
-		}
-		$this->Session->setFlash(__('Reservation could not be canceled.'));
 		$this->redirect(array('action' => 'index'));
 	}
 }

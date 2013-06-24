@@ -42,17 +42,22 @@ table tr:nth-child(even) {
 	text-align: right;font-family: "arial rounded mt bold",helvetica,arial,sans-serif;float:right;margin:-32px -13px 0px 0;
 }
 
+.sidebar{
+	margin-top: 50px;
+}
+
 -->
 </style>
 <?php echo $this->Html->script(array('script_dynamic_content'));?>
 <div class="flash-message"><?php echo $this->Session->flash(); ?></div>
-<div style="margin-left:5%;">
 
+<div class="well">
 <div>
 	<a href="<?php echo $this->params->webroot; ?>categories" class="tip-bottom no-ajax" data-original-title="Go to categories"><span class="btn btn-small btn-inverse" style="position:absolute;margin: 9px 0px 0px 6px"><i class="icon-white icon-chevron-left"></i>back</span></a>
-</div><br/>
-<h6 style="text-align: right;font-size: 16.9px;">Destinations</h6>
-<hr/>
+	
+	</a>
+
+</div><br/><br/>
 <div class="row-fluid">	
 	<?php
 		if($super_admin || $bank_admin){
@@ -63,8 +68,13 @@ table tr:nth-child(even) {
 	?>
 		<table width="100%">
 			<tr>
+				<td colspan="4">
+					<?php echo $this->Element('others/country_header'); ?>
+				</td>
+			</tr>
+			<tr>
 				<td style="width:75%;">
-					<table border="0" cellspacing="1" cellpadding="1" class="row-fluid" width="100%" style="margin-top: -5%;">
+					<table border="0" cellspacing="1" cellpadding="1" class="row-fluid" width="100%">
 						<tr class="row-fluid"><td colspan="3" class="row-fluid container-fluid"><br /></td></tr>
 							
 							
@@ -107,7 +117,7 @@ table tr:nth-child(even) {
 											echo $this->Html->link(
 															$this->Html->image("destinations/".$destination['Destination']['image_file'], array('alt'=> __('roundbob.com', true), 'border' => '0','style'=>"width:100%;height:220px")),
 															array('controller' => 'destinations', 'action' => 'view', $destination['Destination']['id']),
-															array('target' => '_blank', 'escape' => false,"class"=>"change-container","loadable-container"=>".dymamic-content")
+															array('target' => '_blank', 'escape' => false)
 														);
 											echo '<div>';
 												echo '<div style="margin:10px;">';
@@ -158,6 +168,9 @@ table tr:nth-child(even) {
 						?>
 					</table>	
 				</td>
+				<td>
+					<?php echo $this->Element('others/left_panel1')?>
+				</td>
 			</tr>
 		</table>
 		<center>
@@ -176,8 +189,9 @@ table tr:nth-child(even) {
 			</div>
 		</center>
 </div>
+
 <div id="breadcrumb">
-	<a href="<?php echo $this->params->webroot; ?>categories" class="tip-bottom no-ajax" data-original-title="Go to categories"><span class="btn btn-small btn-inverse"><i class="icon-white icon-chevron-left"></i>back</span></a>
+	<a href="<?php echo $this->params->webroot; ?>categories" class="tip-bottom no-ajax" data-original-title="Go to categories"><span class="btn btn-large btn-inverse"><i class="icon-white icon-chevron-left"></i>back</span></a>
 	<?php
 		if($super_admin || $bank_admin){
 			if($this->Session->read("RoundBob['Booking']['admin_client_name']")!=null){

@@ -130,7 +130,7 @@
     <div class="widget">
         <h2 class="advanced-search">Advanced Search</h2>
         <div class="advanced-search-box">			
-			<?php echo $this->Form->create('Destination',array('action'=>'advanced_search')); ?>
+			<?php echo $this->Form->create('Destination',array('action'=>'advanced_search','class'=>'change-container',"loadable-container"=>".dymamic-content")); ?>
 				<fieldset>
 				<?php
 					echo $this->Form->input('price',array('label'=>'Maximum price($)'));

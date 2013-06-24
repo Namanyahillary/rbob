@@ -27,10 +27,10 @@
 </style>
 <?php echo $this->Html->script(array('script_dynamic_content'));?>
 <div class="flash-message"><?php echo $this->Session->flash(); ?></div>
-<div class="well">
-<div id="breadcrumb">
-	<a href="<?php echo $this->params->webroot; ?>destinations" class="tip-bottom" data-original-title="Go to Destinations"><span class="btn btn-small btn-inverse"><i class="icon-white icon-chevron-left"></i>back</span></a>
-	<a class="current" href="#"><?php  echo h($destination['Destination']['name']); ?>
+<div style="margin-left:5%;">
+
+<div>
+	<a href="<?php echo $this->params->webroot; ?>destinations" class="tip-bottom change-container" loadable-container=".dymamic-content" data-original-title="Go to Destinations"><span class="btn btn-small btn-inverse" style="position:absolute;margin: 9px 0px 0px 6px"><i class="icon-white icon-chevron-left"></i>back</span></a>
 	<?php
 		if($super_admin || $bank_admin){
 			if($this->Session->read("RoundBob['Booking']['admin_client_name']")!=null){
@@ -38,9 +38,10 @@
 			}
 		}
 	?>
-	</a>
+</div><br/>
+<h6 style="text-align: right;font-size: 16.9px;"><?php  echo h($destination['Destination']['name']); ?></h6>
+<hr/>
 
-</div><br/><br/>
 <div class="destinations view">
 
 	<dl>
@@ -51,8 +52,8 @@
 		</dd>
 	</dl><br/>
 	<div>
-		<sup class="price-currency" style="color: #f0812b;font-size: 40px;"><?php echo ($_currency['Currency']['short_code']); ?></sup>
-		<span class="net-price" style="color: #f0812b;font-size: 70px;font-weight: normal;font-style: normal;line-height: 1;"><?php echo h($destination['Destination']['cost'])*($_currency['Currency']['rate']); ?></span>
+		<sup class="price-currency" style="color: #f0812b;font-size: 30px;"><?php echo ($_currency['Currency']['short_code']); ?></sup>
+		<span class="net-price" style="color: #f0812b;font-size: 45px;font-weight: normal;font-style: normal;line-height: 1;"><?php echo h($destination['Destination']['cost'])*($_currency['Currency']['rate']); ?></span>
 	</div><br/>
 	<div style="color:red;font-weight:bold;float:right;margin-top: 15px; margin-left:25px;">
 			<div class="book-as-group">
@@ -72,9 +73,9 @@
 			<?php if($regular):?>
 				<span class="btn btn-primary add-to-wish-list">Add to wish list</span>
 			<?php endif; ?>
-			<span class="btn btn-danger">
+			<span class="btn btn-danger"> 
 					<?php
-						echo $this->Html->link('Book',array('controller'=>'bookings','action'=>'book',$destination['Destination']['id']),array('style'=>'color:#fff'));
+						echo $this->Html->link('Book',array('controller'=>'bookings','action'=>'book',$destination['Destination']['id']),array('style'=>'color:#fff','class'=>'change-container',"loadable-container"=>".dymamic-content"));
 					?>
 			</span>
 			<?php if($super_admin || $collector1): ?>
@@ -110,7 +111,7 @@
 					</td>
 					<?php if($logged_in):?>
 					<td style="vertical-align: middle;">
-						<a title="add" href="<?php echo $this->webroot.'bookings/add_activity/'.$destination['Destination']['id'].'/'.$activity['id'];?>" style="color:#fff"><span class="btn btn-info"><i class="icon-white icon-plus-sign"></i></span></a>
+						<a class="change-container" loadable-container=".dymamic-content" title="add" href="<?php echo $this->webroot.'bookings/add_activity/'.$destination['Destination']['id'].'/'.$activity['id'];?>" style="color:#fff"><span class="btn btn-info"><i class="icon-white icon-plus-sign"></i></span></a>
 					</td>
 					<?php endif;?>
 				</tr>				
@@ -141,7 +142,7 @@
 							</td>
 							<?php if($logged_in):?>
 							<td style="vertical-align: middle;">
-								<a title="remove" href="<?php echo $this->webroot.'bookings/remove_activity/'.$destination['Destination']['id'].'/'.$a['Activity']['id'];?>" style="color:#fff"><span class="btn btn-info"><i class="icon-white icon-remove"></i></span></a>
+								<a class="change-container" loadable-container=".dymamic-content" title="remove" href="<?php echo $this->webroot.'bookings/remove_activity/'.$destination['Destination']['id'].'/'.$a['Activity']['id'];?>" style="color:#fff"><span class="btn btn-info"><i class="icon-white icon-remove"></i></span></a>
 							</td>
 							<?php endif;?>
 						</tr>				

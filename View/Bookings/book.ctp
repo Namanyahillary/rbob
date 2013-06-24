@@ -1,4 +1,4 @@
-<div class="well">
+<div style="margin-left: 5%;">
 <?php
 	$_currency=($this->Session->read("RoundBob['Destination']['Currency']"));
 	$_activities_selected=$this->Session->read("RoundBob['Booking']['activities']");
@@ -7,28 +7,31 @@
 <?php echo $this->Html->script(array('script_dynamic_content'));?>
 <div class="flash-message"><?php echo $this->Session->flash(); ?></div>
 
-<div id="breadcrumb">
+<div>
 	<?php 
 		if(isset($destination[0]['Destination'])){
-			echo '<a href="'.$this->params->webroot.'destinations/view/'.$destination[0]['Destination']['id'].'" class="tip-bottom" data-original-title="Go to Destinations"><i class="icon-th"></i>back</a>';
+			echo '<a href="'.$this->params->webroot.'destinations/view/'.$destination[0]['Destination']['id'].'" class="tip-bottom change-container" loadable-container=".dymamic-content" data-original-title="Go to Destinations"><span class="btn btn-small btn-inverse" style="position:absolute;margin: 9px 0px 0px 6px"><i class="icon-white icon-chevron-left"></i>back</span></a>';
 		}
 	?>
+	
 	<?php
 		if($super_admin || $bank_admin){
 			if($this->Session->read("RoundBob['Booking']['admin_client_name']")!=null){
-				echo '<span style="color:red"> You are booking for '.($this->Session->read("RoundBob['Booking']['admin_client_name']")).'</span>';
+				echo ' > <span style="color:red">You are booking for '.($this->Session->read("RoundBob['Booking']['admin_client_name']")).'</span>';
 			}
 		}
 	?>
-</div><br/><br/>
+</div><br/>
+<h6 style="text-align: right;font-size: 16.9px;">Summary<?php if(isset($destination[0]['Destination'])){echo ' ('.h($destination[0]['Destination']['name']).')';}?></h6>
+<hr/>
 
-<h6>Summary</h6>
+<div class="well">
 <table class="well">
-	<tr>
+	<tr style="border-bottom:1px solid #ddd;">
 		<td></td>
-		<td>Destination</td>
-		<td>Cost</td>
-		<td>Location</td>
+		<td><b>Destination</b></td>
+		<td><b>Cost</b></td>
+		<td><b>Location</b></td>
 	</tr>
 	<tr>
 		<td><?php echo $this->Html->image("bg_login1.png", array('alt'=> __('deeloz.ug', true), 'border' => '0','style'=>"max-width:100px"));?></td>
@@ -80,7 +83,7 @@
 							$activity_total_price+=$a['Activity']['price'];?>
 						</td>
 						<td style="vertical-align: middle;">
-							<a href="<?php echo $this->webroot.'bookings/remove_activity/'.$destination[0]['Destination']['id'].'/'.$a['Activity']['id'];?>" style="color:#fff"><span class="btn btn-info"><i class="icon-white icon-remove"></i> remove</span></a>
+							<a class="change-container" loadable-container=".dymamic-content" href="<?php echo $this->webroot.'bookings/remove_activity/'.$destination[0]['Destination']['id'].'/'.$a['Activity']['id'];?>" style="color:#fff"><span class="btn btn-info"><i class="icon-white icon-remove"></i> remove</span></a>
 						</td>
 					</tr>				
 				<?php endforeach;?>
@@ -123,10 +126,7 @@
 		<td>
 			<div class="bank-selection">
 				<select title="Select where the bank you will pay from is located.">
-					<option selected="selected" value="0">--select your payment bank country--</option>
-					<?php foreach($countries as $country): ?>				
-						<option value="<?php echo h($country['Country']['id']); ?>"><?php echo h($country['Country']['name']); ?></option>
-					<?php endforeach; ?>
+					<option value="<?php echo h($country['Country']['id']); ?>"><?php echo h($country['Country']['name']); ?></option>
 				</select>
 			</div>
 		</td>
@@ -140,6 +140,7 @@
 		</tr>
 	<?php endif; ?>
 </table>
+</div>
 
 <script>
 	$('.xyz').click(function(){
@@ -168,7 +169,7 @@
 		<?php endif; ?>
 		$.ajax({
 			url: _url,
-			success: function(data) {removeLoading();$('.dynamic-content').html(data);},
+			success: function(data) {removeLoading();$('.dymamic-content').html(data);},
 			error: function() {removeLoading();}
 		});
 		

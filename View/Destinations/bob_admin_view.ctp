@@ -33,6 +33,16 @@
 			<?php echo h($destination['Destination']['cost']); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('From'); ?></dt>
+		<dd>
+			<?php echo h($destination['Destination']['date_from']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('To'); ?></dt>
+		<dd>
+			<?php echo h($destination['Destination']['date_to']); ?>
+			&nbsp;
+		</dd>
 	</dl>
 </div>
 <div class="actions">

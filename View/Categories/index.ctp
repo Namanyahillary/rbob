@@ -43,7 +43,7 @@ table tr:nth-child(even) {
 				</td>
 			</tr>
 			<tr>
-				<td style="width:75%;">
+				<td style="width:75%;" class="dymamic-content">
 					<table border="0" cellspacing="1" cellpadding="1" class="row-fluid">
 						<tr>
 							<td colspan="3">
@@ -93,7 +93,7 @@ table tr:nth-child(even) {
 										echo $this->Html->link(
 														$this->Html->image("categories/".$category['Category']['image_file'], array('alt'=> __('roundbob.com', true), 'border' => '0','style'=>"width:100%")),
 														array('controller' => 'categories', 'action' => 'view', $category['Category']['id']),
-														array('target' => '_blank', 'escape' => false)
+														array('target' => '_blank', 'escape' => false,"class"=>"change-container","loadable-container"=>".dymamic-content")
 													);
 										
 										echo '</div>';

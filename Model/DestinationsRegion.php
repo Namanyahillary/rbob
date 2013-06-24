@@ -25,8 +25,8 @@ class DestinationsRegion extends AppModel {
 			),
 		),
 		'destination_id' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
+			'notempty' => array(
+				'rule' => array('notempty'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,

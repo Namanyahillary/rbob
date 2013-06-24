@@ -12,7 +12,7 @@ $(document).ready(function(){
 	
 	//Fetch data for clicked links
 	$('.dynamic-content a, .use-ajax').click(function (){	
-		if(!($(this).hasClass('no-ajax'))){
+		if(!($(this).hasClass('no-ajax')) && !($(this).hasClass('nivo-nextNav')) && !($(this).hasClass('nivo-control')) && !($(this).hasClass('nivo-prevNav'))){
 			if(!(confirmRequest($(this))))	return false;showLoading();
 			_obj=$(this);
 			
@@ -92,7 +92,7 @@ function removeLoading(){
 function prepare_ajax_links(){
 	//remove all the hrefs(hyperlinks)
 	$('.dynamic-content a, .use-ajax').each(function(){
-		if(!($(this).hasClass('no-ajax')) && ($(this).attr('href')!='#')){
+		if(!($(this).hasClass('no-ajax')) && ($(this).attr('href')!='#') && !($(this).hasClass('nivo-nextNav')) && !($(this).hasClass('nivo-control')) && !($(this).hasClass('nivo-prevNav'))){
 			var reference_link=$(this).attr('href');
 			$(this).attr('href','#');
 			$(this).attr('data-target',reference_link);
@@ -122,7 +122,12 @@ function confirmRequest(obj){
 function afterFetch(obj,data){
 	if(obj.hasClass('change-container')){
 		var loadable_container=obj.attr('loadable-container');
-		$(''+loadable_container).html(data);
+		var _class_object=$(''+loadable_container);
+		if(_class_object.length){
+			$(''+loadable_container).html(data);
+		}else{
+			$('.dynamic-content').html(data);
+		}		
 		removeLoading();
 	}else if(obj.hasClass('for-modal')){
 		removeLoading();

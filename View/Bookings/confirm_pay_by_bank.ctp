@@ -2,7 +2,7 @@
 <div id="breadcrumb">
 	<?php 
 		if(isset($destination[0]['Destination'])){
-			echo '<a href="'.$this->params->webroot.'destinations/index" class="tip-bottom" data-original-title="Go to Destinations"><i class="icon-th"></i>destinations</a>';
+			echo '<a href="'.$this->params->webroot.'destinations/index" class="tip-bottom change-container" loadable-container=".dymamic-content" data-original-title="Go to Destinations"><i class="icon-th"></i>destinations</a>';
 		}
 	?>
 </div><br/><br/>

@@ -18,15 +18,15 @@
 		<li class="submenu linc8">
 			<a href="#" linc='linc8'><i class="icon icon-th"></i> <span>My Wish List</span></a>
 			<ul>
-				<li><?php echo $this->Html->link('View wish list',array('controller'=>'wish_lists','action'=>'index'),array('class'=>'use-ajax sub_link','linc'=>'linc8','sub_linc'=>'linc1a')); ?></li>
+				<li><?php echo $this->Html->link('View wish list',array('controller'=>'wish_lists','action'=>'index'),array('class'=>'use-ajax sub_link change-container',"loadable-container"=>".dymamic-content",'linc'=>'linc8','sub_linc'=>'linc1a')); ?></li>
 			</ul>
 		</li>
 		
 		<li class="submenu linc3">
 			<a href="#" linc='linc3'><i class="icon icon-briefcase"></i> <span>Holidays</span></a>
 			<ul>
-				<li><?php echo $this->Html->link('My holidays',array('controller'=>'bookings','action'=>'index'),array('class'=>'use-ajax sub_link','linc'=>'linc3','sub_linc'=>'linc3a')); ?></li>
-				<li><?php echo $this->Html->link('My group holidays',array('controller'=>'bookings','action'=>'index','group'),array('class'=>'use-ajax sub_link','linc'=>'linc3','sub_linc'=>'linc3b')); ?></li>
+				<li><?php echo $this->Html->link('My holidays',array('controller'=>'bookings','action'=>'index'),array('class'=>'use-ajax sub_link change-container',"loadable-container"=>".dymamic-content",'linc'=>'linc3','sub_linc'=>'linc3a')); ?></li>
+				<li><?php echo $this->Html->link('My group holidays',array('controller'=>'bookings','action'=>'index','group'),array('class'=>'use-ajax sub_link change-container',"loadable-container"=>".dymamic-content",'linc'=>'linc3','sub_linc'=>'linc3b')); ?></li>
 			</ul>
 		</li>
 		<li class="submenu linc6">
