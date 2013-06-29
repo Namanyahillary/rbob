@@ -140,7 +140,14 @@ class DestinationsController extends AppController {
 			$this->Session->delete("RoundBob['Booking']['activities']");
 		}
 		$options = array('conditions' => array('Destination.' . $this->Destination->primaryKey => $id));
+		$destination_images=$this->Destination->DestinationImage->find('all',array(
+			'conditions'=>array(
+				'DestinationImage.destination_id'=>$id
+			),
+			'recursive'=>-1
+		));
 		$this->set('destination', $this->Destination->find('first', $options));
+		$this->set('destination_images', $destination_images);
 	}
 
 /**

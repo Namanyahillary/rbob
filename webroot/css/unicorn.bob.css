@@ -58,10 +58,11 @@ margin-top:-2%;
 	background-image: -ms-linear-gradient(top, #426400 0%, #100F17 100%);
 	background-image: -o-linear-gradient(top, #426400 0%, #100F17 100%);
 	background-image: linear-gradient(top, #426400 0%, #100F17 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#426400', endColorstr='#13152A',GradientType=0 ); /* IE6-9 */
 }
 
 #sidebar > ul > li.open.submenu > a {					
-	border-bottom: 1px solid #0D0D1E;
+	border-bottom: 1px solid #427200;
 }
 #sidebar > ul > li.open.active.submenu > a {
 	border-bottom: 1px solid #3D5B00;

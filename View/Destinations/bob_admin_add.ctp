@@ -5,6 +5,7 @@
 	<fieldset>
 		<legend><?php echo __('Add Destination'); ?></legend>
 	<?php
+		echo $this->Form->input('unique_id');
 		echo $this->Form->input('name');
 		echo $this->Form->input('location');
 		echo $this->Form->input('latitude',array('type'=>'text'));

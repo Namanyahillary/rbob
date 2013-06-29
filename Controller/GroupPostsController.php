@@ -80,8 +80,12 @@ class GroupPostsController extends AppController {
 					if(move_uploaded_file($_FILES['fileField']['tmp_name'],"img/group_posts/$file_name")){
 						$this->request->data['GroupPost']['image_url']=$file_name;//filename to use for submitted file
 						$this->request->data['GroupPost']['has_image']=1;
-						$width = 150;$height = 150;
-						$this->ImageResize->resize($image, $width, $height);											
+		
+						if (copy("img/group_posts/$file_name","img/imagecache/group_posts/$file_name")) {
+							$image ="img/imagecache/group_posts/$file_name"; 
+							$width = 500;$height = 240;
+							$this->ImageResize->resize($image, $width, $height);
+						}
 					}
 				}
 			}
@@ -89,8 +93,12 @@ class GroupPostsController extends AppController {
 			$this->GroupPost->create();
 			if ($this->GroupPost->save($this->request->data)) {
 				$this->redirect(array('controller'=>'groups','action' => 'view',$this->request->data['GroupPost']['group_id']));
-			} else {
-				$this->Session->setFlash(__('The group post could not be saved. Please, try again.'));
+			} else {				
+				$this->Session->setFlash(__('Say something about the Post.'));
+				if(file_exists("img/group_posts/$file_name")){
+					@unlink("img/group_posts/$file_name");
+				}
+				$this->redirect(array('controller'=>'groups','action' => 'view',$this->request->data['GroupPost']['group_id']));
 			}
 		}
 		$groups = $this->GroupPost->Group->find('list');

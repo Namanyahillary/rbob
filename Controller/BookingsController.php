@@ -509,9 +509,25 @@ class BookingsController extends AppController {
 		
 		
 		
-		$msg="You made a reservation for ".$destinations[0]['Destination']['name'].'. Follow the status of your reservation from your account.<br/><b>Transaction ID:</b> '.$transaction;	
-		
+		$msg="You made a reservation for ".$destinations[0]['Destination']['name'].'. Follow the status of your reservation from your account.<br/><b>Transaction ID:</b> '.$transaction;
 		$this->set(compact('msg'));
+
+		//Send SMS 
+		$msg="Hi ".($this->Auth->User('name')).", your travel starts here, please make your payments in time and look forward to a unique travel experience. tref:".$transaction;
+		$phone=$this->Auth->User('phone');
+		$data = array(
+			"username"=>"256779625322",
+			"from"=>'Roundbob',
+			"recipients"=>$phone,
+			"message"=>$msg,
+			"password"=>"P@ssw0rd",
+			"type"=>"normal"
+		);
+		$url = "http://smsjaja.com/smsjaja-api.php";
+		$data = http_build_query ($data);
+		$func->jaja_do_post_request($url,$data);
+		
+		
 	}
 	
 

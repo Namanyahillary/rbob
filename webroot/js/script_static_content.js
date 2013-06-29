@@ -4,9 +4,9 @@
 **/
 
 $(document).ready(function(){
-	setInterval(function(){ 
+	/*setInterval(function(){ 
        fetchNewMessageCount();
-    }, 3000);
+    }, 3000);*/
 	
 });
 

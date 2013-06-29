@@ -23,8 +23,9 @@
 		<li class="submenu linc2">
 			<a href="#" linc='linc2'><i class="icon icon-pencil"></i> <span>Destinations</span></a>
 			<ul>
-				<li><?php echo $this->Html->link('List',array('controller'=>'destinations','action'=>'index'),array('class'=>'use-ajax sub_link','linc'=>'linc2','sub_linc'=>'linc2a')); ?></li>
-				<li><?php echo $this->Html->link('Add',array('controller'=>'destinations','action'=>'bob_admin_add'),array('class'=>'use-ajax sub_link','linc'=>'linc2','sub_linc'=>'linc2b')); ?></li>
+				<li><?php echo $this->Html->link('List destinations',array('controller'=>'destinations','action'=>'index'),array('class'=>'use-ajax sub_link','linc'=>'linc2','sub_linc'=>'linc2a')); ?></li>
+				<li><?php echo $this->Html->link('Add destinations',array('controller'=>'destinations','action'=>'bob_admin_add'),array('class'=>'use-ajax sub_link','linc'=>'linc2','sub_linc'=>'linc2b')); ?></li>
+				<li><?php echo $this->Html->link('Destination images',array('controller'=>'destination_images','action'=>'index'),array('class'=>'use-ajax sub_link','linc'=>'linc2','sub_linc'=>'linc2b')); ?></li>
 			</ul>
 		</li>
 		<?php endif; ?>

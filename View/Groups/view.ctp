@@ -142,7 +142,7 @@ table tr:nth-child(even) {background: none;}
 												
 												<?php if($group_post['GroupPost']['has_image']==1): ?>
 													<p class="info-text" style="min-height:200px;">														
-														<?php echo $this->Html->image('group_posts/'.h($group_post['GroupPost']['image_url']),array('style'=>'border-radius:5px;float:left;margin:2%;'));?>
+														<?php echo $this->Html->image('imagecache/group_posts/'.h($group_post['GroupPost']['image_url']),array('style'=>'border-radius:5px;float:left;margin:2%;'));?>
 														<?php echo h($group_post['GroupPost']['content']); ?>
 													</p>
 												<?php else: ?>

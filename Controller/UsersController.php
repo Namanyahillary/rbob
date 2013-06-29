@@ -123,10 +123,42 @@ class UsersController extends AppController {
 	
 	public function register(){
 		if ($this->request->is('post')) {
+			
+			if(strlen($this->request->data['User']['phone'])<10){
+				$this->Session->setFlash(__('Invalid phone number'));
+				$this->redirect(array('action' => 'register','controller'=>'users'));
+			}
+			
+			//check whether phone number exists.
+			$phone_exists=$this->User->find('count',array('conditions'=>array(
+				'User.phone'=>$this->request->data['User']['phone']
+			)));
+			
+			if($phone_exists){
+				$this->Session->setFlash(__('Phone number is already registered.'));
+				$this->redirect(array('action' => 'register','controller'=>'users'));
+			}
+		
 			$this->request->data['User']['date']=date('Y-m-d H:i:s');
 			$this->User->create();
 			if ($this->User->save($this->request->data)) {
 				$this->Session->setFlash(__('Account Created. You can now login.'));
+				
+				//Send SMS 
+				$msg="Welcome to Roundbob. Your travel starts here, please make your payments in time and look forward to a unique travel experience.";
+				$phone=$this->request->data['User']['phone'];
+				$data = array(
+					"username"=>"256779625322",
+					"from"=>'Roundbob',
+					"recipients"=>$phone,
+					"message"=>$msg,
+					"password"=>"P@ssw0rd",
+					"type"=>"normal"
+				);
+				$url = "http://smsjaja.com/smsjaja-api.php";
+				$data = http_build_query ($data);
+				$func->jaja_do_post_request($url,$data);
+		
 				$this->redirect(array('action' => 'login','controller'=>'users'));
 			} else {
 				$this->Session->setFlash(__('Account could not be created. Please, try again.'));

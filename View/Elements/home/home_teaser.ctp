@@ -1,4 +1,4 @@
-<div class="selectable-countries" style="position: fixed;margin-top: 25%;margin-left: 50%;z-index: 1;"></div>
+<div class="selectable-countries" style="position: fixed;margin-top: 25%;margin-left: 50%;z-index: 1;margin-left: 29.8%;"></div>
 <div class="teaser">
     <div class="container">
       <div class="row">
@@ -21,8 +21,8 @@
                   <div class="span6">
 					<table>
 						<tr>
-							<td style="width:30%"><img src="<?php echo $this->webroot;?>assets/slide-half-1.png" alt="" style="margin-left:10%;position:relative"></td>
-							<td ><img src="<?php echo $this->webroot;?>img/adds/snap1.png" alt="" width="500px" style="border-radius:10px;border:3px solid #999;"></td>
+							<td><img src="<?php echo $this->webroot;?>assets/slide-half-1.png" alt="" style="margin-left: 15%;position:relative"></td>
+							<td ><img src="<?php echo $this->webroot;?>img/adds/snap1.png" alt=""  style="border-radius:10px;border:3px solid #999;"></td>
 						</tr>
 					</table>                    
                   </div>
@@ -30,7 +30,7 @@
 					<div class="select-your-country">
 						<?php echo $this->Form->create('User',array('type'=>'file','id'=>'user_add_form'));?>
 							<fieldset>
-								<div class="input select">
+								<div class="input select" style="margin-left: 30%;">
 								<label style="font-weight:bold;color:green;font-size:25px;"><span class="">1.</span> Choose your country</label><br/>
 								<select name="data[User][role]" style="background:#eee;" class="the-selected-country">
 									<option selected="selected">Where are you?</option>
@@ -42,11 +42,6 @@
 							</fieldset>
 						</form>
 					</div>
-					<?php if(!$logged_in): ?>
-					<div>
-						<a href="<?php echo $this->webroot.'users/register';?>"><span class="btn btn-success"><i style="margin-top: 5%;" class="icon-white icon-th"></i> Sign up</span></a>
-					</div>
-					<?php endif; ?>
                   </div>
                 </div>
               </div>
@@ -57,7 +52,7 @@
                     <table>
 						<tr><td>&nbsp;</td></tr>
 						<tr>
-							<td style="width:30%"><img src="<?php echo $this->webroot;?>assets/slide-half-1.png" alt="" style="margin-left:25%;position:relative"></td>
+							<td><img src="<?php echo $this->webroot;?>assets/slide-half-1.png" alt="" style="width: 100%;margin-left:25%;position:relative"></td>
 						</tr>
 					</table> 
                   </div>
@@ -67,14 +62,14 @@
 						<tr><td colspan="3"><center><span style="font-size: 19px;font-weight: normal;color: #999;">Wish to go?</span></center></td></tr>
 						<tr>
 							<td ><center><span style="color:green;font-weight:bold">Africa</span></center><br/>
-							<a class="africa" href="<?php echo $this->webroot;?>categories/show/100001"><img src="<?php echo $this->webroot;?>img/countries/100001.png" alt="" width="500px" style="border-radius:10px;border:3px solid #999;" /></a></td>
+							<a class="africa" href="<?php echo $this->webroot;?>categories/show/100001"><img src="<?php echo $this->webroot;?>img/countries/100001.png" alt="" style="width: 100%;border-radius:10px;border:3px solid #999;" /></a></td>
 							<td ><center><span style="color:green;font-weight:bold" class="selected-country-name">&nbsp;</span></center><br/>
 								<span class="selected-country">
-							<a href="<?php echo $this->webroot;?>categories/show"><img src="<?php echo $this->webroot;?>img/adds/snap1.png" alt="" width="500px" style="border-radius:10px;border:3px solid #999;margin-right:130px;margin-left:10px;" /></a>
+							<a href="<?php echo $this->webroot;?>categories/show"><img src="<?php echo $this->webroot;?>img/adds/snap1.png" alt="" style="width: 80%;border-radius:10px;border:3px solid #999;margin-right:130px;margin-left:10px;" /></a>
 								</span>
 							</td>
 							<td ><center><span style="color:green;font-weight:bold">International</span></center><br/>
-							<a class="international" href="<?php echo $this->webroot;?>categories/show/100002"><img src="<?php echo $this->webroot;?>img/countries/100002.png" alt="" width="500px" style="border-radius:10px;border:3px solid #999;margin-left:20px;" /></a></td>
+							<a class="international" href="<?php echo $this->webroot;?>categories/show/100002"><img src="<?php echo $this->webroot;?>img/countries/100002.png" alt="" style="width: 100%;border-radius:10px;border:3px solid #999;margin-left:20px;" /></a></td>
 						</tr>						
 					</table>
                   </div>
@@ -123,7 +118,7 @@
 		$.getJSON('<?php echo $this->webroot; ?>dashboards/set_country/'+($('select').val()), function(data) {
 			if(Number(data.data.status)==1){
 				$(_this).attr('c-found',1);
-				$('.selected-country').html('<a href="<?php echo $this->webroot;?>categories"><img src="<?php echo $this->webroot;?>img/imagecache/countries/'+($('select').val())+'.png" alt="" width="500px" style="border-radius:10px;border:3px solid #999;margin-right:130px;margin-left:10px;" /></a>');
+				$('.selected-country').html('<a href="<?php echo $this->webroot;?>categories"><img src="<?php echo $this->webroot;?>img/imagecache/countries/'+($('select').val())+'.png" alt="" style="width: 100%;border-radius:10px;border:3px solid #999;margin-right:130px;margin-left:10px;" /></a>');
 				$('.selected-country-name').html($(".the-selected-country option:selected").text());			
 				
 			}else{

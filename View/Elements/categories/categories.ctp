@@ -7,7 +7,7 @@ allow_get=false;
 <?php
 		echo $this->Html->css('style_login_categories');
 ?>
-<body style="position: absolute; width: 100%; margin-top: 35px; height: auto !important;">
+<body style="position: absolute; width: 100%; margin-top: 35px; height: auto !important;overflow:auto;">
 	<div id="container">
 		<div id="header">
 			<h1><a href="#">Admin</a></h1>		

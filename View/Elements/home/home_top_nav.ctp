@@ -11,7 +11,7 @@
 <div class="navbar-inner">
   <div class="container">
 	<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">Menu</a>
-	<a class="brand" href="<?php echo $url; ?>"><?php echo $this->Html->image('logo.png',array('width'=>'35px')); ?></a>
+	<a class="brand" href="<?php echo $url; ?>"><?php echo $this->Html->image('logo.png',array('width'=>'35px','style'=>'width:35px')); ?></a>
 	<div id="primary-nav" class="nav-collapse">
 	  <ul class="nav">
 		<li class="<?php if($is_home) echo ''; ?>"><a class="anchorLink no-ajax" href="<?php echo $url; ?>"><i class="icon-white icon-home"></i> Home</a></li>
@@ -24,7 +24,7 @@
 		<?php if($logged_in): ?>
 			<li>
 				<a style="margin-top:5px;" class="use-ajax" href="<?php echo $this->params->webroot.'users/view/'.($users_Id);?>">
-					<img src="<?php echo $this->params->webroot.'img/pic/'.$profile_image;?>" width="20px" style="border-radius:4px;"  />
+					<img src="<?php echo $this->params->webroot.'img/pic/'.$profile_image;?>" width="20px" style="border-radius:4px;width:20px;"  />
 					<?php echo $name_of_user; ?>
 				</a>
 			</li>

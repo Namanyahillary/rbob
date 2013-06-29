@@ -1,3 +1,28 @@
+<div class="the_backdrop">
+</div>
+<div id="pop-display">
+	<div class="row">
+		<div class="span8">
+			<center>
+				<div class="media-content">
+				</div>
+			</center>
+		</div>
+		<div class="span4">
+			<div style="height:100%;" class="media-content-title"></div>
+		</div>
+	</div>
+</div>
+
+<style>
+	<!--
+		#pop-display{position: absolute;z-index: 1000;top:0;}
+		#pop-display input[type=text]{background-color: #f1f2f3;}
+	->
+</style>
+
+
+	
 <?php
 	$_currency=($this->Session->read("RoundBob['Destination']['Currency']"));
 	$_activities_selected=$this->Session->read("RoundBob['Booking']['activities']");
@@ -84,6 +109,11 @@
 						echo $this->Html->link('Add Activity',array('controller'=>'activities','action'=>'add',$destination['Destination']['id']),array('style'=>'color:#fff'));
 					?>
 			</span>
+			<span class="btn btn-primary">
+					<?php 
+						echo $this->Html->link('Add Images',array('controller'=>'destination_images','action'=>'add',$destination['Destination']['id']),array('style'=>'color:#fff'));
+					?>
+			</span>
 			<?php endif; ?>
 		<?php else:?>
 			<span class="btn btn-primary"><i class="icon-off icon-white"></i><a style="color:#fff" href="<?php echo $this->webroot;?>users/login"> Login to book</a></span>
@@ -160,6 +190,13 @@
 <div class="actions" style="width:40%;">
 	<?php echo $this->Html->image("destinations/".($destination['Destination']['image_file']), array('alt'=> __('deeloz.ug', true), 'border' => '0','style'=>"width:100%;border-radius:10px;border:2px solid #cfcfcf;")); ?>
 	
+	<br/><br/>
+	<div>
+		<?php foreach($destination_images as $destination_image):?>
+			<span class="span2 destination-image" di="<?php echo $destination_image['DestinationImage']['image_file']; ?>" title="<?php echo $destination_image['DestinationImage']['caption']; ?>" style="cursor:pointer;"><img src="<?php echo $this->webroot; ?>img/imagecache/destination_images/<?php echo $destination_image['DestinationImage']['image_file']; ?>"  style="height:70px" alt=""></span>
+		<?php endforeach; ?>
+	</div>
+	
 	<dl style="margin-top:2%;">
 		<dt><?php echo __('Location'); ?></dt>
 		<dd>
@@ -234,6 +271,21 @@
 				});
 			});			
 		</script>
+		
+		<script>
+		$('.destination-image').click(function(){
+			console.log('bang');
+			var di=$(this).attr('di');
+			var my_caption=$(this).attr('title');
+			$('.the_backdrop').html('<div class="modal-backdrop fade in"></div>').hide().fadeIn('slow');
+			var my_data='<img src="<?php echo $this->webroot;?>img/destination_images/'+(di)+'" alt="deeloz.ug" border="0" style="width:100%;border-radius:10px;border:2px solid #cfcfcf;" class="destination-image">';
+			$('.media-content').html(my_data).hide().fadeIn('slow');
+			$('.media-content-title').html('<div class="well"><h6>'+my_caption+'</h6><hr/></div>').hide().fadeIn('slow');
+		});
+		$('.modal-backdrop, .the_backdrop').click(function(){
+			$('.the_backdrop, .media-content, .media-content-title').html('');
+		});
+	</script>
 			
 	</div>
 </div>

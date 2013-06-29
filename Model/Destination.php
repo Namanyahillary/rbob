@@ -74,6 +74,19 @@ class Destination extends AppModel {
 			'exclusive' => '',
 			'finderQuery' => '',
 			'counterQuery' => ''
+		),
+		'DestinationImage' => array(
+			'className' => 'DestinationImage',
+			'foreignKey' => 'destination_id',
+			'dependent' => true,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
 		)
 	);
 	

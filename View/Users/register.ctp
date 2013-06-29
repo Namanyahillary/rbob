@@ -18,6 +18,7 @@
 					<?php
 						echo $this->Form->input('name');
 						echo $this->Form->input('email');
+						echo $this->Form->input('phone',array('label'=>'Phone (NB: u will receive a confirmation message on your number.)'));
 						echo $this->Form->input('username');
 						echo $this->Form->input('password');
 						echo $this->Form->input('password_confirmation',array('type'=>'password'));

@@ -15,8 +15,8 @@ body {
   background: #F2F2F2;
   font-family: 'Ubuntu', sans-serif;
   background: #82b920 url("../img/standard-bg.png") center top no-repeat;
-  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='assets/header-bg-3.jpg', sizingMethod='scale'); /* IE7 */
-  -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='assets/header-bg-3.jpg', sizingMethod='scale')"; /* IE8+ */
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../img/standard-bg.png', sizingMethod='scale'); /* IE7 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../img/standard-bg.png', sizingMethod='scale')"; /* IE8+ */
   -webkit-background-size: cover;
      -moz-background-size: cover;
        -o-background-size: cover;

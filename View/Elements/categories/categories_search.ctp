@@ -5,7 +5,7 @@
 	<!--
 		#search-site{position: absolute;z-index: 25;top: 5px;left: 90px;}
 		#search-site input[type=text]{background-color: #f1f2f3;}
-		.search-results{background: #fff;min-height: 176px;max-height: 400px;width: 20%;left: 90px;top: 36px;position: absolute;z-index: 21;border-radius: 5px;opacity: 0.98;overflow-y:auto;overflow-x:auto;}
+		.search-results{background: #fff;min-height: 176px;max-height: 400px;width: 20%;left: 90px;top: 36px;position: absolute;z-index: 21;border-radius: 5px;opacity: 0.98;overflow-y:auto;overflow-x:auto;color:#000;}
 		@media (max-width: 768px){
 			.search-results{width: 50%;}
 		}

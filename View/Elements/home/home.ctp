@@ -1,4 +1,4 @@
-<body id="home" data-spy="scroll" data-target="#primary-nav" style="position: fixed; width: 100%; height: 100% !important;">
+<body id="home" data-spy="scroll" data-target="#primary-nav" style="width: 93.8%; height: 100% !important;">
 	<div id="container">
 	
 		<?php echo $this->element('home/home_top_nav_login'); ?>

@@ -6,6 +6,7 @@
 		<legend><?php echo __('Edit Destination'); ?></legend>
 	<?php
 		echo $this->Form->input('id');
+		echo $this->Form->input('unique_id');
 		echo $this->Form->input('name');
 		echo $this->Form->input('location');
 		echo $this->Form->input('latitude',array('type'=>'text'));

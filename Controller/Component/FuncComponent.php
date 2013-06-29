@@ -29,6 +29,31 @@ class FuncComponent extends Component {
 		return $serial;
 	}
 	
+	function jaja_do_post_request($url, $data, $optional_headers = null){	
+		//check SMS gateway response for whether operation succeded.
+		//codes='108';success {"success":true,"message":"Message successfull sent","code":108}
+		//codes='101';failure {"success":false,"message":"Error: Invalid Username or Password","code":101}
+		//codes='104';failure {"success":false,"message":"Error: Insufficient Credit","code":101}
+		
+		 $params = array('http' => array(
+					  'method' => 'POST',
+					  'content' => $data
+		 ));
+		 if ($optional_headers !== null) {
+			$params['http']['header'] = $optional_headers;
+		 }
+		 $ctx = stream_context_create($params);
+		 $fp = @fopen($url, 'rb', false, $ctx);
+		 if (!$fp) {
+			throw new Exception("Problem with $url, $php_errormsg");
+		 }
+		 $response = @stream_get_contents($fp);
+		 if ($response === false) {
+			throw new Exception("Problem reading data from $url, $php_errormsg");
+		 }
+		 return $response;
+	}
+	
 }
   
 ?>
